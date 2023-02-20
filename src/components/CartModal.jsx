@@ -16,7 +16,7 @@ function CartModal({ toggle }) {
       <div className={styles.itemContainer}>
         {cart.map((item) => {
           return (
-            <div className={styles.cartCard}>
+            <div className={styles.cartCard} key ={item.id}>
               <h1>{item.name}</h1>
               <h3>X {item.quantity}</h3>
               <h3>X {item.quantity * item.price}</h3>

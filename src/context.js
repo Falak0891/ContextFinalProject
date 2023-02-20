@@ -14,11 +14,15 @@ const ContextProvider = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
 
   const handleAdd = (item) => {
+    const checkItem = cart.filter((c) => c.id === item.id);
+    console.log("Itempresesnt: ",cart.filter((c) => c.id === item.id));
     const index = cart.findIndex((cartItem) => cartItem.id === item.id);
-    if (index !== -1) {
-      const newCart = [...cart];
-      newCart[index].quantity++;
-      setCart(newCart);
+    if (checkItem[0]) {
+      // const newCart = [...cart];
+      // newCart[index].quantity++;
+      cart[index].quantity++;
+      setCart(cart);
+      console.log(cart)
       setTotal(total + cart[index].price);
     } else {
       setCart([...cart, { ...item, quantity: 1 }]);
